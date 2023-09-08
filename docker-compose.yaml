@@ -1,0 +1,46 @@
+services:
+  app1:
+    image: 'freestl/pictureapp:3'
+    container_name: app1
+    ports:
+      - '8081:8080'
+  app2:
+    image: 'freestl/pictureapp:3'
+    container_name: app2
+    ports:
+      - '8082:8080'
+  app3:
+    image: 'freestl/pictureapp:3'
+    container_name: app3
+    ports:
+      - '8083:8080'
+
+  nginx1:
+    image: openresty/openresty
+    container_name: nginx1
+    volumes:
+      - ./nginx1/:/etc/nginx/conf.d/
+      - ./nginxcache/:/data/nginx/cache
+    ports:
+      - '81:80'
+
+  nginx2:
+    image: openresty/openresty
+    container_name: nginx2
+    volumes:
+      - ./nginx2/:/etc/nginx/conf.d/
+      - ./nginxcache/:/data/nginx/cache
+    ports:
+      - '82:80'
+
+  bind:
+    image: sameersbn/bind
+    container_name: bind
+    volumes:
+      - ./bind/:/data
+    ports:
+      - '53:53/tcp'
+      - '10000:10000/tcp'
+      - '53:53/udp'
+#    command:
+#      - 'chmod 777 -R /etc'

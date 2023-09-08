@@ -1,0 +1,12 @@
+$TTL 86400
+@   IN  SOA     ns.picture.com. admin.picture.xom. (
+                2023081104  ; serial
+                3600        ; refresh
+                1800        ; retry
+                604800      ; expire
+                86400       ; minimum
+            )
+
+@       IN  NS  ns.picture.com.
+@       IN  A   127.0.0.1
+ns      IN  A   127.0.0.1
